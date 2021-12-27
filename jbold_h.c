@@ -34,10 +34,6 @@
 #define JBOLD_OUT_TEXT   "File Name for output file"
 #define JBOLD_TAB_TEXT   "Expand Tab Size"
 
-extern char *rev_jbold_c;
-extern char *rev_jbold_i_c;
-char *rev_jbold_h_c="$Id: jbold_h.c,v 2.1 2021/12/27 19:28:00 jmccue Exp $";
-
 /*
  * show_rev() -- Show Version information and exit
  */
@@ -46,9 +42,6 @@ int show_rev(struct s_work_area *w)
 {
 
   fprintf(w->out.fp,"%s %s:\n", w->prog_name, LIT_REV);
-  fprintf(w->out.fp,"\t%s\n",   rev_jbold_c);
-  fprintf(w->out.fp,"\t%s\n",   rev_jbold_i_c);
-  fprintf(w->out.fp,"\t%s\n",   REV_JBOLD_H);
 
 #ifdef J_LIB2_H
   fprintf(w->out.fp, "\t%s %s\n", LIT_INFO_02, j2_get_build());

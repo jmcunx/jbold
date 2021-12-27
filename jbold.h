@@ -14,9 +14,9 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-#ifndef REV_JBOLD_H
+#ifndef JBOLD_H
 
-#define REV_JBOLD_H "$Id: jbold.h,v 2.1 2021/12/27 19:28:00 jmccue Exp $"
+#define JBOLD_H "INCLUDED"
 
 #define PROG_NAME   "jbold"
 #define JBOLD_BOLD  "JBOLD_BOLD"    /* default for overstrikes */
@@ -53,4 +53,4 @@ void init_file(struct s_file_info *);
 int show_help_long(FILE *);
 #endif
 
-#endif  /* END: REV_JBOLD_H */
+#endif  /* JBOLD_H */

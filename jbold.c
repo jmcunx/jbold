@@ -33,8 +33,6 @@
 #include <j_lib2m.h>
 #include "jbold.h"
 
-char *rev_jbold_c="$Id: jbold.c,v 2.1 2021/12/27 19:28:00 jmccue Exp $";
-
 /*
  * close_in() -- Close an input file
  */

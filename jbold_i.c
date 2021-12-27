@@ -41,9 +41,6 @@
 #define MIN_BOLD_SIZE    0
 #define MAX_BOLD_SIZE    10
 
-/* global variables */
-char *rev_jbold_i_c="$Id: jbold_i.c,v 2.1 2021/12/27 19:28:00 jmccue Exp $";
-
 /*
  * init_file() -- initialize file structure
  */
