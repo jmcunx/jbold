@@ -161,7 +161,7 @@ void process_file(struct s_work_area *w, char *fname)
     return;
 
   /*** process data ***/
-  while (getline(&buf, &buf_size, fp) > -1)
+  while (j2_getline(&buf, &buf_size, fp) > -1)
     {
       print_line(w, buf);
       fprintf(w->out.fp, "\n");
