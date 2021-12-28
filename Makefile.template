@@ -157,7 +157,6 @@ install:	all
 	$(INSTALLD) $(READINS)
 	$(INSTALLB) jbold $(PRODUCTION)
 	$(INSTALLT) jbold.1$(CNROFF) $(PRODMAN)
-	$(INSTALLT) README.txt $(READINS)
 	@echo DONE
 
 clean:
