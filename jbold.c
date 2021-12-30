@@ -154,7 +154,7 @@ void process_file(struct s_work_area *w, char *fname)
 
 {
   char *buf = (char *) NULL;
-  ssize_t  buf_size = 0;
+  size_t  buf_size = 0;
   FILE *fp = (FILE *) NULL;
 
   if ( ! open_in(&fp, fname, w->err.fp) )
