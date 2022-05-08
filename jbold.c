@@ -150,20 +150,18 @@ void print_line(struct s_work_area *w, char *b)
 /*
  * process_file()
  */
-void process_file(struct s_work_area *w, char *fname)
+void process_file(struct s_work_area *w, char *fname, char **buf, size_t *buf_size)
 
 {
-  char *buf = (char *) NULL;
-  size_t  buf_size = 0;
   FILE *fp = (FILE *) NULL;
 
   if ( ! open_in(&fp, fname, w->err.fp) )
     return;
 
   /*** process data ***/
-  while (j2_getline(&buf, &buf_size, fp) > -1)
+  while (j2_getline(buf, buf_size, fp) > -1)
     {
-      print_line(w, buf);
+      print_line(w, (*buf));
       fprintf(w->out.fp, "\n");
     }
 
@@ -182,16 +180,22 @@ int main(int argc, char **argv)
 {
   struct s_work_area w;
   int i;
+  char *buf = (char *) NULL;
+  size_t  buf_size = 0;
 
   init(&w, argc, argv);
 
   for (i = optind; i < argc; i++)
-    process_file(&w, argv[i]);
+    process_file(&w, argv[i], &buf, &buf_size);
   if (i == optind)
-    process_file(&w, FILE_NAME_STDIN);
+    process_file(&w, FILE_NAME_STDIN, &buf, &buf_size);
 
   close_out(&(w.out));
   close_out(&(w.err));
+  if (w.prog_name != (char *) NULL)
+    free(w.prog_name);
+  if (buf != (char *) NULL)
+    free(buf);
   exit(EXIT_SUCCESS);
 
 } /* main() */
