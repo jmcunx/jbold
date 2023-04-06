@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 ... 2021 2022
+ * Copyright (c) 2009 ... 2023 2024
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -21,16 +21,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifdef UNIX
-#include <unistd.h>
-#endif
 #ifdef _MSDOS
 #include <getopt.h>
+#else
+#include <unistd.h>
 #endif
 #include <errno.h>
 
+#ifdef HAVE_JLIB
 #include <j_lib2.h>
 #include <j_lib2m.h>
+#endif
+
 #include "jbold.h"
 
 /*

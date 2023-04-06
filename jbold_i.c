@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 ... 2021 2022
+ * Copyright (c) 2009 ... 2023 2024
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -22,17 +22,19 @@
 #include <string.h>
 #include <ctype.h>
 #include <errno.h>
-#ifdef UNIX
-#include <unistd.h>
-#endif
 #ifdef _MSDOS
 #include <getopt.h>
+#else
+#include <unistd.h>
 #endif
 #ifndef __COHERENT__
 #include <libgen.h>
 #endif
+
+#ifdef HAVE_JLIB
 #include <j_lib2.h>
 #include <j_lib2m.h>
+#endif
 
 #include "jbold.h"
 
@@ -258,10 +260,6 @@ void get_args(struct s_work_area *w, int argc, char **argv)
 
   /* show help/rev, exit if displyed */
   ok = EXIT_SUCCESS;
-#ifdef JHELP_LONG
-  if (display_help_long)
-    ok = show_help_long(w->out.fp);
-#endif
   if (display_help)
     ok = show_help(w);
   if (display_rev)

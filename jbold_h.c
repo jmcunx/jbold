@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 ... 2021 2022
+ * Copyright (c) 2009 ... 2023 2024
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -21,8 +21,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+
+#ifdef HAVE_JLIB
 #include <j_lib2.h>
 #include <j_lib2m.h>
+#endif
 
 #include "jbold.h"
 
@@ -74,10 +77,6 @@ int show_help(struct s_work_area *w)
   fprintf(w->out.fp, USG_MSG_ARG_ERR,         SWITCH_CHAR, ARG_ERR);
   fprintf(w->out.fp, USG_MSG_ARG_FORCE,       SWITCH_CHAR, ARG_FORCE);
   fprintf(w->out.fp, USG_MSG_ARG_OUT,         SWITCH_CHAR, ARG_OUT);
-
-#ifdef JHELP_LONG
-  fprintf(w->out.fp, USG_MSG_ARG_HELP_LONG,   SWITCH_CHAR, ARG_HELP_LONG);
-#endif
 
   fprintf(w->out.fp, USG_MSG_ARG_HELP,        SWITCH_CHAR, ARG_HELP);
   fprintf(w->out.fp, USG_MSG_ARG_VERSION,     SWITCH_CHAR, ARG_VERSION);
