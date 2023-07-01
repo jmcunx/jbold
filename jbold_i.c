@@ -42,6 +42,7 @@
 #define MAX_TAB_SIZE     100000
 #define MIN_BOLD_SIZE    0
 #define MAX_BOLD_SIZE    10
+#define SARG             100
 
 /*
  * init_file() -- initialize file structure
@@ -174,13 +175,15 @@ int open_out(FILE *wfp, struct s_file_info *f, char *fname, int force)
 void get_args(struct s_work_area *w, int argc, char **argv)
 
 {
-  char ckarg[80];
+  char ckarg[SARG];
   int opt;
   char *out_file   = (char *) NULL;
   char *err_file   = (char *) NULL;
   int display_rev  = (int) FALSE;
   int display_help = (int) FALSE;
   int ok;
+
+  memset(ckarg, 0, SARG);
 
   /* ensure we have the default from the environment */
   out_file = w->out.fname;
@@ -191,24 +194,24 @@ void get_args(struct s_work_area *w, int argc, char **argv)
 #endif
 
 #ifdef JHELP_LONG
-  sprintf(ckarg, "%c:%c:%c:%c:%c%c%c%c", 
-	  ARG_TAB_SPACE,
-	  ARG_BOLD,
-	  ARG_ERR, 
-	  ARG_OUT, 
-	  ARG_HELP_LONG, 
-	  ARG_HELP, 
-	  ARG_FORCE, 
-	  ARG_VERSION);
+  snprintf(ckarg, (SARG - 1), "%c:%c:%c:%c:%c%c%c%c", 
+           ARG_TAB_SPACE,
+           ARG_BOLD,
+           ARG_ERR, 
+           ARG_OUT, 
+           ARG_HELP_LONG, 
+           ARG_HELP, 
+           ARG_FORCE, 
+           ARG_VERSION);
 #else
-  sprintf(ckarg, "%c:%c:%c:%c:%c%c%c", 
-	  ARG_TAB_SPACE,
-	  ARG_BOLD,
-	  ARG_ERR, 
-	  ARG_OUT, 
-	  ARG_HELP, 
-	  ARG_FORCE, 
-	  ARG_VERSION);
+  snprintf(ckarg, (SARG - 1), "%c:%c:%c:%c:%c%c%c", 
+           ARG_TAB_SPACE,
+           ARG_BOLD,
+           ARG_ERR, 
+           ARG_OUT, 
+           ARG_HELP, 
+           ARG_FORCE, 
+           ARG_VERSION);
 #endif
 
   while ((opt = getopt(argc, argv, ckarg)) != -1)
